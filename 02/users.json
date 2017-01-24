@@ -1,0 +1,10 @@
+[
+    {"gender": "female", "name": {"title": "miss", "first": "mary", "last": "jones"}, "email": "email01@gmail.com", "username": "mary01"},
+    {"gender": "female", "name": {"title": "miss", "first": "maria", "last": "rios"}, "email": "email02@gmail.com", "username": "maririos01"},
+    {"gender": "male", "name": {"title": "mr", "first": "alan", "last": "waller"}, "email": "email03@gmail.com", "username": "waller01"},
+    {"gender": "male", "name": {"title": "mr", "first": "juan", "last": "moralez"}, "email": "email04@gmail.com", "username": "moralez01"},
+    {"gender": "male", "name": {"title": "mr", "first": "carlos", "last": "contreras"}, "email": "email05@gmail.com", "username": "contreras01"},
+    {"gender": "female", "name": {"title": "miss", "first": "marta", "last": "de leon"}, "email": "email06@gmail.com", "username": "deleon01"},
+    {"gender": "female", "name": {"title": "miss", "first": "ana", "last": "montes"}, "email": "email07@gmail.com", "username": "ana01"},
+    {"gender": "female", "name": {"title": "miss", "first": "julieta", "last": "rivera"}, "email": "email08@gmail.com", "username": "rivera01"}
+]

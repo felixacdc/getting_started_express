@@ -1,0 +1,26 @@
+{
+  "name": "getting_started_express",
+  "version": "1.0.0",
+  "description": "Fundamentos de express en nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixacdc/getting_started_express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felixacdc/getting_started_express/issues"
+  },
+  "homepage": "https://github.com/felixacdc/getting_started_express#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0"
+  }
+}
