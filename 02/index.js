@@ -16,11 +16,28 @@ fs.readFile('users.json', {encoding: 'utf-8'}, (err, data) => {
 })
 
 app.get('/', (req, res) => {
-    res.send(JSON.stringify(users, null, 2));
+    var buffer = '';
+
+    users.forEach((user) => {
+        buffer += "<a href='/" + user.username + "'>" + user.name.full + '</a><br>'
+    });
+
+    res.send(buffer);
 });
 
-app.get('/yo', (req, res) => {
-    res.send('YO!');
+app.get(/big.*/, (req, res, next) => {
+    console.log('BIG USER ACCESS');
+    next();
+});
+
+app.get(/.*dog.*/, (req, res, next) => {
+    console.log('DOG GO WOOF');
+    next();
+});
+
+app.get('/:username', (req, res) => {
+    var username = req.params.username;
+    res.send(username);
 });
 
 var server = app.listen(3000, () => {
