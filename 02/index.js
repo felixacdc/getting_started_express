@@ -2,7 +2,8 @@ var express = require('express'),
     app = express();
 
 var fs = require('fs'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    engines = require('consolidate');
 
 var users = [];
 
@@ -13,16 +14,14 @@ fs.readFile('users.json', {encoding: 'utf-8'}, (err, data) => {
         user.name.full = _.startCase(user.name.first + ' ' + user.name.last);
         users.push(user);
     });
-})
+});
+
+app.engine('hbs', engines.handlebars);
+app.set('views', './views');
+app.set('view engine', 'hbs');
 
 app.get('/', (req, res) => {
-    var buffer = '';
-
-    users.forEach((user) => {
-        buffer += "<a href='/" + user.username + "'>" + user.name.full + '</a><br>'
-    });
-
-    res.send(buffer);
+    res.render('index', {users});
 });
 
 app.get(/big.*/, (req, res, next) => {

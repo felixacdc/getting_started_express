@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/felixacdc/getting_started_express#readme",
   "dependencies": {
+    "consolidate": "^0.14.5",
     "express": "^4.14.0",
+    "handlebars": "^4.0.6",
+    "jade": "^1.11.0",
     "lodash": "^4.17.4",
     "nodemon": "^1.11.0"
   }
