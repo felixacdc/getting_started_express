@@ -1,10 +1,10 @@
 [
-    {"gender": "female", "name": {"title": "miss", "first": "mary", "last": "jones"}, "email": "email01@gmail.com", "username": "mary01"},
-    {"gender": "female", "name": {"title": "miss", "first": "maria", "last": "rios"}, "email": "email02@gmail.com", "username": "maririos01"},
-    {"gender": "male", "name": {"title": "mr", "first": "alan", "last": "waller"}, "email": "email03@gmail.com", "username": "waller01"},
-    {"gender": "male", "name": {"title": "mr", "first": "juan", "last": "moralez"}, "email": "email04@gmail.com", "username": "moralez01"},
-    {"gender": "male", "name": {"title": "mr", "first": "carlos", "last": "contreras"}, "email": "email05@gmail.com", "username": "contreras01"},
-    {"gender": "female", "name": {"title": "miss", "first": "marta", "last": "de leon"}, "email": "email06@gmail.com", "username": "deleon01"},
-    {"gender": "female", "name": {"title": "miss", "first": "ana", "last": "montes"}, "email": "email07@gmail.com", "username": "ana01"},
-    {"gender": "female", "name": {"title": "miss", "first": "julieta", "last": "rivera"}, "email": "email08@gmail.com", "username": "rivera01"}
+    {"gender": "female", "name": {"title": "miss", "first": "mary", "last": "jones"}, "email": "email01@gmail.com", "username": "mary01", "location": {"address": "Reu", "street": "4ta calle", "state": "Sur", "zip": "857485"}},
+    {"gender": "female", "name": {"title": "miss", "first": "maria", "last": "rios"}, "email": "email02@gmail.com", "username": "maririos01", "location": {"address": "Guate", "street": "5ta calle", "state": "Norte", "zip": "784582"}},
+    {"gender": "male", "name": {"title": "mr", "first": "alan", "last": "waller"}, "email": "email03@gmail.com", "username": "waller01", "location": {"address": "Reu", "street": "10ma calle", "state": "Sur", "zip": "12452"}},
+    {"gender": "male", "name": {"title": "mr", "first": "juan", "last": "moralez"}, "email": "email04@gmail.com", "username": "moralez01", "location": {"address": "Reu", "street": "9na calle", "state": "Occidente", "zip": "254785"}},
+    {"gender": "male", "name": {"title": "mr", "first": "carlos", "last": "contreras"}, "email": "email05@gmail.com", "username": "contreras01", "location": {"address": "Guate", "street": "4ta calle", "state": "Occidente", "zip": "5875"}},
+    {"gender": "female", "name": {"title": "miss", "first": "marta", "last": "de leon"}, "email": "email06@gmail.com", "username": "deleon01", "location": {"address": "Reu", "street": "10ma calle", "state": "Norte", "zip": "587745"}},
+    {"gender": "female", "name": {"title": "miss", "first": "ana", "last": "montes"}, "email": "email07@gmail.com", "username": "ana01", "location": {"address": "Mazate", "street": "9na calle", "state": "Occidente", "zip": "574878"}},
+    {"gender": "female", "name": {"title": "miss", "first": "julieta", "last": "rivera"}, "email": "email08@gmail.com", "username": "rivera01", "location": {"address": "Xela", "street": "11va calle", "state": "Sur", "zip": "10252"}}
 ]

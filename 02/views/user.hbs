@@ -23,7 +23,42 @@
     </style>
 </head>
 <body>
+    <div class="nav">
+        <a href="/">Back to User List</a>
+    </div>
+
+    <div class="pic">
+        <img src="/profilepics/{{ username }}_sm.jpg" alt="">
+        <p>
+            <a href="" onclick="edit()">Edit</a>
+            <a href="" onclick="del()">Delete</a>
+        </p>        
+    </div>
+
     <h1>{{ username }}</h1>
-    <img src="/profilepics/{{ username }}_sm.jpg" alt="">
+
+    <dl>
+        <dt>Street</dt>
+        <dd class="view">{{ address.street }}</dd>
+        <dd class="edit"><input type="text" id="street" value="{{ address.street }}"></dd>
+        <br>
+        <dt>City</dt>
+        <dd class="view">{{ address.city }}</dd>
+        <dd class="edit"><input type="text" id="city" value="{{ address.city }}"></dd>
+        <br>
+        <dt>State</dt>
+        <dd class="view">{{ address.state }}</dd>
+        <dd class="edit"><input type="text" id="state" value="{{ address.state }}"></dd>
+        <br>
+        <dt>Zip</dt>
+        <dd class="view">{{ address.zip }}</dd>
+        <dd class="edit"><input type="text" id="zip" value="{{ address.zip }}"></dd>
+        <br>
+        <dt></dt>
+        <dd class="edit">
+            <input type="submit" value="Save" onclick="save()">
+            <input type="submit" value="Cancel" onclick="cancel()">
+        </dd>
+    </dl>
 </body>
 </html>

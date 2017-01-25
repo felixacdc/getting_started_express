@@ -38,7 +38,11 @@ app.get(/.*dog.*/, (req, res, next) => {
 
 app.get('/:username', (req, res) => {
     var username = req.params.username;
-    res.render('user', {username});
+    var user = getUser(username);
+    res.render('user', {
+        username,
+        address: user.location
+    });
 });
 
 var server = app.listen(3100, () => {
