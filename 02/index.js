@@ -20,6 +20,8 @@ app.engine('hbs', engines.handlebars);
 app.set('views', './views');
 app.set('view engine', 'hbs');
 
+app.use('/profilepics', express.static('images'));
+
 app.get('/', (req, res) => {
     res.render('index', {users});
 });
@@ -39,6 +41,6 @@ app.get('/:username', (req, res) => {
     res.send(username);
 });
 
-var server = app.listen(3000, () => {
+var server = app.listen(3100, () => {
     console.log('Server running at http://localhost:' + server.address().port)
 });
