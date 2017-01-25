@@ -38,7 +38,7 @@ app.get(/.*dog.*/, (req, res, next) => {
 
 app.get('/:username', (req, res) => {
     var username = req.params.username;
-    res.send(username);
+    res.render('user', {username});
 });
 
 var server = app.listen(3100, () => {

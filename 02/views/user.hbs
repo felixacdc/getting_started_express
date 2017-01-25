@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User index</title>
+    <style>
+        * {
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        div {
+            display: flex;
+            align-content: center;
+            padding: 1em;
+            font-size: 1.5em;
+        }
+        div a {
+            padding-left: 0.5em;
+        }
+        img {
+            width: 650px;
+            height: 450px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ username }}</h1>
+    <img src="/profilepics/{{ username }}_sm.jpg" alt="">
+</body>
+</html>
