@@ -1,4 +1,5 @@
 var express = require('express'),
+    path = require('path'),
     app = express();
 
 var fs = require('fs'),
@@ -45,6 +46,19 @@ app.get('/:username', (req, res) => {
     });
 });
 
-var server = app.listen(3100, () => {
+var server = app.listen(3000, () => {
     console.log('Server running at http://localhost:' + server.address().port)
 });
+
+function getUser (username) {
+  var user = JSON.parse(fs.readFileSync(getUserFilePath(username), {encoding: 'utf8'}));
+  user.name.full = _.startCase(user.name.first + ' ' + user.name.last);
+  _.keys(user.location).forEach(function (key) {
+    user.location[key] = _.startCase(user.location[key]);
+  });
+  return user;
+}
+
+function getUserFilePath (username) {
+  return path.join(__dirname, 'users', username) + '.json';
+}
