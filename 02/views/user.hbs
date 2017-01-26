@@ -93,7 +93,7 @@
             $(".edit").hide()
         }
         function save() {
-            $.ajax('/{{user.username}}', {
+            $.ajax('/{{username}}', {
                 method: "PUT",
                 data: {
                     street: $("#street").val(),

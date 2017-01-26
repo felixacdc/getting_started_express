@@ -3,12 +3,13 @@
   "name": {
     "title": "mr",
     "first": "alan",
-    "last": "walters"
+    "last": "walters",
+    "full": "Alan Walters"
   },
   "location": {
-    "street": "2251 w 6th st",
-    "city": "lincoln",
-    "state": "ohio",
+    "street": "2251 W 6th St",
+    "city": "Lincoln",
+    "state": "Kansas",
     "zip": "91132"
   },
   "email": "alan.walters29@example.com",
