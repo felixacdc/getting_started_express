@@ -11,7 +11,7 @@ router.use((req, res, next) => {
         next();
     });
 
-router.get('/',helpers.verifyUser, (req, res) => {
+router.get('/', (req, res) => {
         var username = req.params.username;
         var user = helpers.getUser(username);
         res.render('user', {
@@ -23,7 +23,7 @@ router.get('/',helpers.verifyUser, (req, res) => {
 router.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
-})
+});
 
 router.get('/edit', (req, res) => {
     res.send('You want to edit ' + req.params.username + '???');
