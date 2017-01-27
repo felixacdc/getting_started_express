@@ -6,7 +6,7 @@ var fs = require('fs'),
     _ = require('lodash'),
     engines = require('consolidate'),
     bodyParser = require('body-parser'),
-    helpers = require('./helpers');
+    JSONStream = require('JSONStream');
 
 app.engine('hbs', engines.handlebars);
 app.set('views', './views');
@@ -51,7 +51,16 @@ app.get('/data/:username', (req, res) => {
     readable.pipe(res);
 });
 
+app.get('/users/by/:gender', (req, res) => {
+    var gender = req.params.gender;
+    var readable = fs.createReadStream('users.json');
 
+    readable.pipe(JSONStream.parse("*", (user) => {
+        if(user.gender === gender) return user.name;
+    }))
+    .pipe(JSONStream.stringify('[\n ', ',\n ','\n]\n'))
+    .pipe(res);
+});
 
 app.get('/error/:username', (req, res) => {
     res.status(404).send('No user named ' + req.params.username + ' found');
