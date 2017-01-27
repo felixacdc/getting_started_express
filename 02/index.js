@@ -33,7 +33,7 @@ function verifyUser(req, res, next) {
         if(yes) {
             next();
         } else {
-            next('route');
+            res.redirect('/error/' + req.params.username);
         }
     });
 }
@@ -71,6 +71,10 @@ app.get(/.*dog.*/, (req, res, next) => {
     next();
 });
 
+app.get('*.json', (req, res) => {
+    res.download('./users/' + req.path);
+});
+
 app.get('/:username', verifyUser, (req, res) => {
     var username = req.params.username;
     var user = getUser(username);
@@ -80,8 +84,8 @@ app.get('/:username', verifyUser, (req, res) => {
     });
 });
 
-app.get('/:foo', (req, res) => {
-    res.send('WHOOPS');
+app.get('/error/:username', (req, res) => {
+    res.status(404).send('No user named ' + req.params.username + ' found');
 });
 
 app.put('/:username', (req, res) => {
