@@ -26,17 +26,6 @@ function saveUser (username, data) {
   fs.writeFileSync(fp, JSON.stringify(data, null, 2), {encoding: 'utf8'});
 }
 
-var users = [];
-
-fs.readFile('users.json', {encoding: 'utf-8'}, (err, data) => {
-    if(err) throw err
-
-    JSON.parse(data).forEach((user) => {
-        user.name.full = _.startCase(user.name.first + ' ' + user.name.last);
-        users.push(user);
-    });
-});
-
 app.engine('hbs', engines.handlebars);
 app.set('views', './views');
 app.set('view engine', 'hbs');
@@ -45,7 +34,19 @@ app.use('/profilepics', express.static('images'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
-    res.render('index', {users});
+    var users = [];
+
+    fs.readdir('users', (err, files) => {
+        files.forEach((file) => {
+            fs.readFile(path.join(__dirname, 'users', file), {encoding: 'utf-8'}, (err, data) => {
+                var user = JSON.parse(data);
+                user.name.full = _.startCase(user.name.first + ' ' + user.name.last);
+                users.push(user);
+                if(users.length === files.length) res.render('index', {users});
+            });
+        });
+    });
+
 });
 
 app.get(/big.*/, (req, res, next) => {
@@ -73,6 +74,12 @@ app.put('/:username', (req, res) => {
     user.location = req.body;
     saveUser(username, user);
     res.end();
+});
+
+app.delete('/:username', (req, res) => {
+    var fp = getUserFilePath(req.params.username);
+    fs.unlinkSync(fp);
+    res.sendStatus(200);
 });
 
 var server = app.listen(3000, () => {
