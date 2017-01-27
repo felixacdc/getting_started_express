@@ -51,37 +51,14 @@ app.get('/data/:username', (req, res) => {
     res.json(user);
 });
 
-app.route('/:username')
-    .all((req, res, next) => {
-        console.log(req.method, 'for', req.params.username);
-        next();
-    })
-    .get(helpers.verifyUser, (req, res) => {
-        var username = req.params.username;
-        var user = helpers.getUser(username);
-        res.render('user', {
-            username,
-            address: user.location
-        })
-    })
-    .put((req, res) => {
-        var username = req.params.username;
-        var user = helpers.getUser(username);
-        user.location = req.body;
-        helpers.saveUser(username, user);
-        res.end();
-    })
-    .delete((req, res) => {
-        var fp = helpers.getUserFilePath(req.params.username);
-        fs.unlinkSync(fp);
-        res.sendStatus(200);
-    });
+
 
 app.get('/error/:username', (req, res) => {
     res.status(404).send('No user named ' + req.params.username + ' found');
 });
 
-
+var userRouter = require('./username');
+app.use('/:username', userRouter);
 
 var server = app.listen(3000, () => {
     console.log('Server running at http://localhost:' + server.address().port)
