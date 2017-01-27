@@ -26,6 +26,18 @@ function saveUser (username, data) {
   fs.writeFileSync(fp, JSON.stringify(data, null, 2), {encoding: 'utf8'});
 }
 
+function verifyUser(req, res, next) {
+    var fp = getUserFilePath(req.params.username);
+
+    fs.exists(fp, (yes) => {
+        if(yes) {
+            next();
+        } else {
+            next('route');
+        }
+    });
+}
+
 app.engine('hbs', engines.handlebars);
 app.set('views', './views');
 app.set('view engine', 'hbs');
@@ -59,13 +71,17 @@ app.get(/.*dog.*/, (req, res, next) => {
     next();
 });
 
-app.get('/:username', (req, res) => {
+app.get('/:username', verifyUser, (req, res) => {
     var username = req.params.username;
     var user = getUser(username);
     res.render('user', {
         username,
         address: user.location
     });
+});
+
+app.get('/:foo', (req, res) => {
+    res.send('WHOOPS');
 });
 
 app.put('/:username', (req, res) => {
