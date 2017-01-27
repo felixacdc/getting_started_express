@@ -15,6 +15,10 @@ app.set('view engine', 'hbs');
 app.use('/profilepics', express.static('images'));
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.get('/favicon.ico', (req, res) => {
+    res.end();
+});
+
 app.get('/', (req, res) => {
     var users = [];
 

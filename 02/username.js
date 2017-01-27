@@ -6,8 +6,8 @@ var router = express.Router({
   mergeParams: true
 });
 
-router.all('/', (req, res, next) => {
-        console.log(req.method, 'for', req.params.username);
+router.use((req, res, next) => {
+        console.log(req.method, 'for', req.params.username, ' at ' + req.path);
         next();
     });
 
@@ -19,6 +19,11 @@ router.get('/',helpers.verifyUser, (req, res) => {
             address: user.location
         })
     });
+
+router.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+})
 
 router.get('/edit', (req, res) => {
     res.send('You want to edit ' + req.params.username + '???');
