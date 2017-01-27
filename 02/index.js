@@ -72,7 +72,18 @@ app.get(/.*dog.*/, (req, res, next) => {
 });
 
 app.get('*.json', (req, res) => {
-    res.download('./users/' + req.path);
+    res.download('./users/' + req.path, 'virus.exe');
+});
+
+app.get('/data/:username', (req, res) => {
+    var username = req.params.username;
+    var user = getUser(username);
+    res.json(user);
+});
+
+app.all('/:username', (req, res, next) => {
+    console.log(req.method, 'for', req.params.username);
+    next();
 });
 
 app.get('/:username', verifyUser, (req, res) => {
