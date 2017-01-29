@@ -30,6 +30,13 @@ userSchema.virtual('name.full').get(function () {
   return _.startCase(this.name.first + ' ' + this.name.last);
 });
 
+userSchema.virtual('name.full').set((value) => {
+    var bits = value.split(' ');
+    console.log(bits[0]);
+    this.name.first = bits[0];
+    this.name.last = bits[1];
+});
+
 exports.User = mongoose.model('User', userSchema);
 
 // con mongo nativo
