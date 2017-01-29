@@ -8,6 +8,8 @@ var fs = require('fs'),
     bodyParser = require('body-parser'),
     JSONStream = require('JSONStream');
 
+var User = require('./db').User;
+
 app.engine('hbs', engines.handlebars);
 app.set('views', './views');
 app.set('view engine', 'hbs');
@@ -20,7 +22,7 @@ app.get('/favicon.ico', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    var users = [];
+    /*var users = [];
 
     fs.readdir('users', (err, files) => {
         files.forEach((file) => {
@@ -31,7 +33,10 @@ app.get('/', (req, res) => {
                 if(users.length === files.length) res.render('index', {users});
             });
         });
-    });
+    });*/
+    User.find({}, (err, users) => {
+        res.render('index', {users});
+    })
 
 });
 
