@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         var username = req.params.username;
         User.findOne({username}, (err, user) => {
             res.render('user', {
-                username,
+                user,
                 address: user.location
             })
         });
@@ -34,7 +34,8 @@ router.use((err, req, res, next) => {
 
 router.put('/',(req, res) => {
         var username = req.params.username;
-        User.findOneAndUpdate({username}, {location: req.body}, (err, user) => {
+        console.log(req.body.location);
+        User.findOneAndUpdate({username}, {location: req.body.location}, (err, user) => {
             res.end();
         });
     });

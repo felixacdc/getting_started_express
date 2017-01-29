@@ -49,16 +49,20 @@
     </div>
 
     <div class="pic">
-        <img src="/profilepics/{{ username }}_med.jpg" alt="">
+        <img src="/profilepics/{{ user.username }}_med.jpg" alt="">
         <p>
             <a href="#" onclick="edit()">Edit</a>
             <a href="#" onclick="del()">Delete</a>
         </p>        
     </div>
 
-    <h1>{{ username }}</h1>
+    <h1>{{ user.username }}</h1>
 
     <dl>
+        <dt>Name</dt>
+        <dd class="view">{{ user.name.full }}</dd>
+        <dd class="edit"><input type="text" id="name" value="{{ user.name.full }}"></dd>
+        <br>
         <dt>Street</dt>
         <dd class="view">{{ address.street }}</dd>
         <dd class="edit"><input type="text" id="street" value="{{ address.street }}"></dd>
@@ -93,13 +97,16 @@
             $(".edit").hide()
         }
         function save() {
-            $.ajax('/{{username}}', {
+            $.ajax('/{{user.username}}', {
                 method: "PUT",
                 data: {
-                    street: $("#street").val(),
-                    city: $("#city").val(),
-                    state: $("#state").val(),
-                    zip: $("#zip").val()
+                    name: $("#name").val(),
+                    location: {
+                        street: $("#street").val(),
+                        city: $("#city").val(),
+                        state: $("#state").val(),
+                        zip: $("#zip").val()
+                    }
                 },
                 complete: function() {
                     cancel()
